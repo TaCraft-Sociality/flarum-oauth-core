@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TacraftSociality\OauthCore\Support;
 
+use Flarum\Foundation\ValidationException;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\User\LoginProvider;
 use Flarum\User\User;
@@ -221,8 +222,12 @@ final class FakeEmail
     }
 
     /**
-     * Take the preferred address when it is still free, otherwise fall back
-     * to a random one so that saving can never hit the unique email index.
+     * Take the preferred address when it is still free.
+     *
+     * Falling back to a random address here would let the sign-up succeed with
+     * an address the skin site can never derive again, silently splitting one
+     * player into two accounts. Refusing is louder and recoverable: an admin
+     * can free the address and let the player try again.
      */
     public static function assignUnique(string $preferred, string $provider = 'qq'): string
     {
@@ -230,7 +235,9 @@ final class FakeEmail
             return $preferred;
         }
 
-        return self::generate($provider);
+        throw new ValidationException([
+            'email' => '该第三方账号对应的邮箱已被占用，请联系管理员处理。',
+        ]);
     }
 
     /**
