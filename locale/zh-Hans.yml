@@ -1,0 +1,4 @@
+tacraft-sociality-oauth-core:
+  admin:
+    email_domain_label: 虚拟邮箱后缀
+    email_domain_help: 留空使用默认的 fake.invalid（RFC 2606 保留域，永不解析、无法收信）。填写后，新注册的第三方账号会用这个后缀，例如 example.com。

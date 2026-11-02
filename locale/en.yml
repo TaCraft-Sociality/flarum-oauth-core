@@ -1,0 +1,4 @@
+tacraft-sociality-oauth-core:
+  admin:
+    email_domain_label: Virtual email domain
+    email_domain_help: Leave empty to use the built-in fake.invalid (RFC 2606 reserved, never resolvable, never deliverable). Otherwise new OAuth accounts use this suffix, for example example.com.

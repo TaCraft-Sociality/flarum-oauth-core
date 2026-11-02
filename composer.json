@@ -1,0 +1,34 @@
+{
+  "name": "tacraft-sociality/flarum-oauth-core",
+  "version": "1.0.0",
+  "description": "Shared account plumbing for the TCS OAuth extensions: provider managed credentials, virtual email addresses and in-site only notifications.",
+  "type": "flarum-extension",
+  "license": "MIT",
+  "require": {
+    "php": "^8.3",
+    "flarum/core": "^2.0.2"
+  },
+  "authors": [
+    {
+      "name": "TCS Dev HUB",
+      "email": "notify@mail.mctcs.com",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "TacraftSociality\\OauthCore\\": "src/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "OAuth Core",
+      "category": "feature",
+      "icon": {
+        "name": "fas fa-user-shield",
+        "backgroundColor": "#374151",
+        "color": "#ffffff"
+      }
+    }
+  }
+}
